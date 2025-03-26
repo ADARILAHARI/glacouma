@@ -3,11 +3,12 @@ import tensorflow as tf
 from PIL import Image, ImageOps
 import numpy as np
 
-st.set_option('deprecation.showfileUploaderEncoding', False)
+#st.set_option('deprecation.showfileUploaderEncoding', False)
 
 # @st.cache(suppress_st_warning=True,allow_output_mutation=True)
 def import_and_predict(image_data, model):
-    image = ImageOps.fit(image_data, (100,100),Image.ANTIALIAS)
+    #image = ImageOps.fit(image_data, (100,100),Image.ANTIALIAS)
+    image = ImageOps.fit(image_data, (100,100), Image.Resampling.LANCZOS)
     image = image.convert('RGB')
     image = np.asarray(image)
     st.image(image, channels='RGB')
